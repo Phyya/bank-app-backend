@@ -37,7 +37,7 @@ public class AccountController {
 
         AccountResponse response =
                 accountService.updateBalance(accountNumber, request.getBalance());
-
+        System.out.println("The response");
         return ResponseEntity.ok(response);
     }
 
