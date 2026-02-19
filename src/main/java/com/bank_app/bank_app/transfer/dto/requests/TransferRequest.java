@@ -1,4 +1,4 @@
-package com.bank_app.bank_app.account.dto.requests;
+package com.bank_app.bank_app.transfer.dto.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,13 +7,14 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateBalanceRequest {
+public class TransferRequest {
 
+    private Long sourceAccountNumber;
+    private Long destinationAccountNumber;
     private BigDecimal amount;
-    private char flag;
+    private String narration;
 }

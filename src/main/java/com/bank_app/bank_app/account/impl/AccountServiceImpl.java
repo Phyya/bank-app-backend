@@ -11,6 +11,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -22,6 +23,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
 
+    public List<Account> getAllAccounts (){
+
+        return accountRepository.findAll();
+
+    }
     public Account getAccountByAccountNo (Long accountNumber){
 
         return accountRepository.findByAccountNumber(accountNumber).orElse(null);
@@ -52,10 +58,10 @@ Account account = new Account(newAccount.getAccountName(), newAccount.getBvn());
             throw new RuntimeException("Unexpected error: " + e.getMessage());
         }
     }
-    public AccountResponse updateAccountBalance(UpdateBalanceRequest newBalanceRequest){
+    public AccountResponse updateAccountBalance(Long accountNumber, UpdateBalanceRequest newBalanceRequest){
 
         BigDecimal updatedBalance;
-        Account account = accountRepository.findByAccountNumber(newBalanceRequest.getAccountNumber()).orElse(null);
+        Account account = accountRepository.findByAccountNumber(accountNumber).orElse(null);
 
         if(account != null) {
             updatedBalance = newBalanceRequest.getFlag() == 'C'
@@ -68,7 +74,8 @@ Account account = new Account(newAccount.getAccountName(), newAccount.getBvn());
             // Map entity to DTO
             return new AccountResponse(
                     savedAccount.getAccountNumber(),
-                    savedAccount.getAccountName()
+                    savedAccount.getAccountName(),
+                    savedAccount.getBalance()
             );
 
         }
