@@ -9,9 +9,10 @@ import java.util.Optional;
 
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Integer> {
-    Optional<Account> findByBvn(Integer bvn);
+public interface AccountRepository extends JpaRepository<Account, Long> {
+    Optional<Account> findByBvn(String bvn);
+    Optional<Account> findByAccountName(String accountName);
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<Account> findByAccountNumber(Long accountNumber);
-
 }

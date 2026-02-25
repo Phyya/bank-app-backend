@@ -30,6 +30,15 @@ public class Transfer {
     @Column(nullable = false)
     private Long destinationAccountNumber;
 
+    // For inter-bank transfers
+    private String destinationBankCode;
+    private String destinationBankName;
+    private String destinationAccountName;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TransferType transferType;
+
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
 

@@ -17,4 +17,8 @@ public class TransferRequest {
     private Long destinationAccountNumber;
     private BigDecimal amount;
     private String narration;
+
+    // For inter-bank transfers (optional)
+    private String destinationBankCode;
+    private String destinationAccountName;
 }

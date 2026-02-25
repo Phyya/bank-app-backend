@@ -8,8 +8,9 @@ import com.bank_app.bank_app.account.dto.responses.AccountResponse;
 import java.util.List;
 
 public interface AccountService {
-    List<Account> getAllAccounts();
-    Account getAccountByAccountNo(Long accountNumber);
+    List<AccountResponse> getAllAccounts();
+    String nameEnquiry(Long accountNumber);
+    AccountResponse getAccountByAccountNo(Long accountNumber);
     AccountResponse createAccount(CreateAccountRequest newAccount);
     AccountResponse updateAccountBalance(Long accountNumber, UpdateBalanceRequest newBalanceRequest);
 }

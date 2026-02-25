@@ -21,16 +21,19 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountNumber; // THIS is now the primary key
 
-    private Integer bvn;
+    private String bvn;
     private String accountName;
     private boolean isActive;
+    private String password;
+
+
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal balance;
 
 
 
-    public Account(String accountName, Integer bvn) {
+    public Account(String accountName, String bvn) {
         this.accountName = accountName;
         this.bvn = bvn;
         this.balance = BigDecimal.ZERO;
